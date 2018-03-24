@@ -10,68 +10,68 @@
 
 package CourseDB.SimulatedCourseDatabase;
 
-//Import Collections and Student class to build each individual student object
+//Import Collections and Course class to build each individual course objects
 import java.util.*;
 import Course;
 
-//Creates several students objects with given attributes
+//Creates several courses objects with given attributes
 public class SimulatedCourseDatabase {
     /*
      *Course Properties: Course Major, Course ID, Pre-requisites, Current Enrollment, Maximum Enrollment
      * 
      */
-    static Student studentA; 
-    static Student studentB;  	 
-    static Student StudentC;	 
-    static Student studentD;
+    static Course courseA; 
+    static course courseB;  	 
+    static course courseC;	 
+    static course courseD;
     
-    //Creates previous courses for students with previous courses
-    static List<String> studentBPreviousCourses = new ArrayList<String>();
-    static List<String> studentCPreviousCourses = new ArrayList<String>();
+    //Creates previous courses for courses with previous courses
+    static List<String> courseBPreviousCourses = new ArrayList<String>();
+    static List<String> courseCPreviousCourses = new ArrayList<String>();
    
-    //Creates current courses for students with current courses
-    static List<String> studentCCurrentCourses = new ArrayList<String>();
-    static List<String> studentDCurrentCourses = new ArrayList<String>();
+    //Creates current courses for courses with current courses
+    static List<String> courseCCurrentCourses = new ArrayList<String>();
+    static List<String> courseDCurrentCourses = new ArrayList<String>();
 
-    //Crates Hash for keyed student ID
-    static Map<String, Student> studentMapById = new HashMap<String, Student>();
+    //Crates Hash for keyed course ID
+    static Map<String, course> courseMapById = new HashMap<String, course>();
          
     //Creates static declarations to create objects
     static {      
         //Adds Previous Courses
-        studentBPreviousCourses.add("CS101");
-        studentBPreviousCourses.add("CS102");
-        studentCPreviousCourses.add("MS101");
-        studentCPreviousCourses.add("MS102");
-        studentCPreviousCourses.add("MS201");
-        studentCPreviousCourses.add("MS202");
+        courseBPreviousCourses.add("CS101");
+        courseBPreviousCourses.add("CS102");
+        courseCPreviousCourses.add("MS101");
+        courseCPreviousCourses.add("MS102");
+        courseCPreviousCourses.add("MS201");
+        courseCPreviousCourses.add("MS202");
         
         //Adds Current Courses
-        studentCCurrentCourses.add("MS301");
-        studentCCurrentCourses.add("MS303");
-        studentDCurrentCourses.add("ME101");
-        studentDCurrentCourses.add("MS102");
+        courseCCurrentCourses.add("MS301");
+        courseCCurrentCourses.add("MS303");
+        courseDCurrentCourses.add("ME101");
+        courseDCurrentCourses.add("MS102");
 
-        //Instantiates Students with courses
-        studentA = new StudentA(1111, "StudentA", "EE", null, null);
-        studentB = new StudentB(2222, "StudentB", "CS", studentBPreviousCourses, null);
-        studentC = new StudentC(3333, "StudentC", "MS", studentCPreviousCourses, studentCCurrentCourses);
-        studentD = new studentD(4444, "StudentD", "ME", null, studentDCurrentCourses);
+        //Instantiates courses with courses
+        courseA = new courseA(1111, "courseA", "EE", null, null);
+        courseB = new courseB(2222, "courseB", "CS", courseBPreviousCourses, null);
+        courseC = new courseC(3333, "courseC", "MS", courseCPreviousCourses, courseCCurrentCourses);
+        courseD = new courseD(4444, "courseD", "ME", null, courseDCurrentCourses);
         
-        //Calls init student method to hash all students
-        initStudent();	
+        //Calls init course method to hash all courses
+        initcourse();	
     }
     
-    //Hashes all students
-    public static void initStudent() {
-        studentMapById.put("1111", studentA);
-        studentMapById.put("2222", studentB);
-        studentMapById.put("3333", studentC);
-        studentMapById.put("4444", studentD);	
+    //Hashes all courses
+    public static void initcourse() {
+        courseMapById.put("1111", courseA);
+        courseMapById.put("2222", courseB);
+        courseMapById.put("3333", courseC);
+        courseMapById.put("4444", courseD);	
     }
     
-    //Returns hash of students
-    public static Map<String, Student> getStudentIdMap(){		
-        return studentMapById;		
+    //Returns hash of courses
+    public static Map<String, course> getcourseIdMap(){		
+        return courseMapById;		
     }
 }

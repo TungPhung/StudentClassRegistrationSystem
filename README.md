@@ -11,12 +11,15 @@ Students have the following properties:
 
 ## Courses ##
 Courses have the following properties:
-1. Course Major - What major the course belongs to (i.e. EE, CS, ME, ENG). While some courses may belong to multiple majors, implementation of a course belonging to multiple majors is not yet implemented. As of initial implementation, courses are only locked to certain majors to determine eligibility.
-2. Name - Course's name as represented by string (EE101, CS101, CS201, ENG302)
+1. Name - Course's name as represented by string (EE101, CS101, CS201, ENG302)
+2. Course Major - What major the course belongs to (i.e. EE, CS, ME, ENG). While some courses may belong to multiple majors, implementation of a course belonging to multiple majors is not yet implemented. As of initial implementation, courses are only locked to certain majors to determine eligibility.
 3. Pre-requisites - Courses may or may not have pre-requisites listed that go by course name. For simplicity initially, courses will only have one pre-requisite maximum   
 4. Current Enrollment - Current number of students currently registered for course
 5. Maximum Enrollment - Course enrollment - maximum number of students allowed in a course
 
 ## To be implemented ##
 1. Student Priority Ranking - Senior, Junior, etc..
-2. Randomized Database
+2. Randomized Test Database
+3. Graphical UI
+4. Exception Catching of Improper input
+
