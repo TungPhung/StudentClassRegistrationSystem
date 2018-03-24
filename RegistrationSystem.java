@@ -8,17 +8,18 @@
  */
 
 //Imports
-import CourseDB.SimulatedCourseDatabase;
-import StudentDB.SimulatedStudentDatabase;
-import Course;
-import Student;
 import java.util.*;
-import java.util.Scanner;
-
-Scanner input = new Scanner(System.in);
 
 public class RegistrationSystem {
+    
     public static void main(String[] args) {
+
+        //Set up Input Stream
+        Scanner stdin = new Scanner(System.in);
+
+        //Print Initial Welcome
         System.out.println("Welcome to the Course Registration System.");
+        int x = stdin.nextInt();
+        System.out.println("I got this " + Integer.toString(x));
     }
 }

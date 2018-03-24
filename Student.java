@@ -87,7 +87,6 @@ public class Student {
             System.out.println("Course added");
         }
 
-        
     }
     //Transfer all current courses to previous courses and empty current courses
     public void endSemester() {

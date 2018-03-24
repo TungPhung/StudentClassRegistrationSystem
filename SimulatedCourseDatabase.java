@@ -10,7 +10,6 @@
 
 //Import Collections and Course class to build each individual course objects
 import java.util.*;
-import Course;
 
 //Creates several courses objects with given attributes
 public class SimulatedCourseDatabase {
@@ -30,13 +29,13 @@ public class SimulatedCourseDatabase {
     static String me = new String("ME");
 
     //Crates Hash for keyed course ID
-    static Map<String, course> courseMapById = new HashMap<String, course>();
+    static Map<String, Course> courseMapById = new HashMap<String, Course>();
          
     //Creates static declarations
     static {
         
         //Creates Arraylist of numerical course numbers (i.e. - 101, 102, 201, 202, etc..)
-        for(int i=100; i < 500; i+100) {
+        for(int i=100; i < 500; i+=100) {
         courseNumberOrder.add(Integer.toString(i + 1));
         courseNumberOrder.add(Integer.toString(i + 2));
         courseNumberOrder.add(Integer.toString(i + 3));
@@ -49,22 +48,23 @@ public class SimulatedCourseDatabase {
     //Hashes all courses
     public static void initCourse() {
         //Create Course objects
-        int maxClassSize = 30
-        int minClassSize = 10
+        int maxClassSize = 30;
+        int minClassSize = 10;
+        Random random = new Random();
         String currentMajor;
-        int preReq = null;
+        String preReq = null;
         for (int i = 0; i < courseMajors.size(); i++) {
             for (int j = 0; i <courseNumberOrder.size(); j++) {
                 int actualClassSize = random.nextInt(maxClassSize - minClassSize + 1) + minClassSize;
-                int actualClassEnrollment = random.nextInt(rand1 + 1);
-                currentMajor = courseMajors.get(i)
+                int actualClassEnrollment = random.nextInt(actualClassSize + 1);
+                currentMajor = courseMajors.get(i);
                 if (j > 0) {
                     preReq = currentMajor + courseNumberOrder.get(j-1);
                 } else {
                     preReq = null;
                 }
-                courseobj = new Course(currentMajor + courseNumberOrder.get(j), currentMajor, preReq, actualClassEnrollment, actualClassSize);
-                courseMapById.put(coursobj.getID(), courseobj);
+                Course courseobj = new Course(currentMajor + courseNumberOrder.get(j), currentMajor, preReq, actualClassEnrollment, actualClassSize);
+                courseMapById.put(courseobj.getID(), courseobj);
             }  
         }
     }

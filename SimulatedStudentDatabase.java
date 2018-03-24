@@ -10,7 +10,6 @@
 
 //Import Collections and Student class to build each individual student object
 import java.util.*;
-import Student;
 
 //Creates several students objects with given attribute s
 public class SimulatedStudentDatabase {
@@ -23,7 +22,7 @@ public class SimulatedStudentDatabase {
      */
     static Student studentA; 
     static Student studentB;  	 
-    static Student StudentC;	 
+    static Student studentC;	 
     static Student studentD;
     
     //Creates previous courses for students with previous courses
@@ -54,10 +53,10 @@ public class SimulatedStudentDatabase {
         studentDCurrentCourses.add("MS102");
 
         //Instantiates Students with courses
-        studentA = new StudentA(1111, "StudentA", "EE", null, null);
-        studentB = new StudentB(2222, "StudentB", "CS", studentBPreviousCourses, null);
-        studentC = new StudentC(3333, "StudentC", "MS", studentCPreviousCourses, studentCCurrentCourses);
-        studentD = new StudentD(4444, "StudentD", "ME", null, studentDCurrentCourses);
+        Student studentA = new Student(1111, "StudentA", "EE", null, null);
+        Student studentB = new Student(2222, "StudentB", "CS", studentBPreviousCourses, null);
+        Student studentC = new Student(3333, "StudentC", "MS", studentCPreviousCourses, studentCCurrentCourses);
+        Student studentD = new Student(4444, "StudentD", "ME", null, studentDCurrentCourses);
         
         //Calls init student method to hash all students
         initStudent();	
