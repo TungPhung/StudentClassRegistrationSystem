@@ -14,8 +14,8 @@ package StudentDB.SimulatedStudentDatabase;
 import java.util.*;
 import Student;
 
-//Creates several students objects with given attributes
-public class StudentCreator {
+//Creates several students objects with given attribute s
+public class SimulatedStudentDatabase {
     /*
      * Test Student Attributes
      * StudentA (ID:1111) - EE (Electrical Engineering) Major, Previous Courses - None, Current Courses - None
@@ -71,7 +71,7 @@ public class StudentCreator {
         studentMapById.put("2222", studentB);
         studentMapById.put("3333", studentC);
         studentMapById.put("4444", studentD);	
-	}
+    }
     
     //Returns hash of students
     public static Map<String, Student> getStudentIdMap(){		
