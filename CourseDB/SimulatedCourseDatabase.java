@@ -20,15 +20,9 @@ public class SimulatedCourseDatabase {
      *Course object properties: Course ID, Course Major, Pre-requisites, Current Enrollment, Maximum Enrollment
      * 
      */
-
-    
-    
+    static List<String> courseNumberOrder = new ArrayList<String>();
     static List<String> courseMajors = new ArrayList<String>();
-    static Course courseA; 
-    static Course courseB;  	 
-    static Course courseC;	 
-    static Course courseD;
-    
+
     //Creates previous courses for courses with previous courses
     static List<String> courseBPreviousCourses = new ArrayList<String>();
     static List<String> courseCPreviousCourses = new ArrayList<String>();
@@ -44,7 +38,7 @@ public class SimulatedCourseDatabase {
     static {
         
         //Creates Arraylist of numerical course numbers (i.e. - 101, 102, 201, 202, etc..)
-        static List<String> courseNumberOrder = new ArrayList<String>();
+        
         for(int i=100; i < 500; i+100) {
         courseNumberOrder.add(Integer.toString(i + 1));
         courseNumberOrder.add(Integer.toString(i + 2));
