@@ -20,8 +20,8 @@ public class Course {
         this.id = NE000;
         this.major = "NE";
         this.preReq = null;
-        this.classEnrollment = 0;
-        this.maxClassSize = 0;
+        this.courseEnrollment = 0;
+        this.maxCourseSize = 0;
     }
     
     //New Coonstructor Construtor w/ no space availability in course
@@ -29,17 +29,48 @@ public class Course {
         this.id = id;
         this.major = major;
         this.preReq = preReq;
-        this.classEnrollment = 0;
-        this.maxClassSize = 0;
+        this.courseEnrollment = 0;
+        this.maxCourseSize = 0;
     }
 
     //Main Constructor with all arguments
-    public Course(String id, String major, String preReq, int classEnrollment, int maxClassSize) {
+    public Course(String id, String major, String preReq, int courseEnrollment, int maxCourseSize) {
         this.id = id;
         this.major = major;
         this.preReq = preReq;
-        this.classEnrollment = classEnrollment;
-        this.maxClassSize = maxClassSize;
+        this.courseEnrollment = courseEnrollment;
+        this.maxCourseSize = maxCourseSize;
+    }
+
+    /*
+     *Methods
+     *
+     */
+
+
+    //Return ID
+    public getID() {
+        return this.id();
+    }
+    
+    //Return Major
+    public getMajor() {
+        return this.major();
+    }
+
+    //Return Pre-Requisite course
+    public preRequisits() {
+        return this.preReq();
+    }
+
+    //Return Current Enrollment
+    public getCourseEnrollment() {
+        return this.courseEnrollment();
+    }
+
+    //Return Max Course Size
+    public getMaxCourseSize() {
+        return this.maxCourseSize();
     }
     
     //Change a course's ID
@@ -64,7 +95,7 @@ public class Course {
         }   
     }
 
-      //Change a course's pre-requisite if it is different from old pre-requisite course
+    //Change a course's pre-requisite if it is different from old pre-requisite course
       public void changeMajor (String newPreReq) {
         if (this.preReq.equals(newPreReq)) {
             System.out.println("Unable to change pre-requisite class - new pre-requisite is same as old pre-prequisite class");
@@ -75,77 +106,50 @@ public class Course {
         }   
     }
 
-    public void checkAvailability
-
+    //Change a course's current enrollment size given that the new number makes sense
     public void changeEnrollment(int n) {
-        if(n >= 0 && n <= ) {
-            this.classEnrollment = n;
-            System.out.println("CuClass Enrollment successfully changed to " + n);
-        } else {}
-        
-    }
-
-    public void changeClassSize()
-
-    //Transfer all current courses to previous courses and empty current courses
-    public void endSemester() {
-        for (Iterator<String> iterator = this.currentClasses.iterator(); iterator.hasNext();) {
-            this.previousClasses.add(iterator.next);
-            this.previousClasses.remove(iterator.next);
+        if(n >= 0 && n <= this.maxCourseSize) {
+            this.courseEnrollment = n;
+            System.out.println("Class enrollment successfully changed to " + Integer.toString(n);
+        } else {
+            System.out.println("Unable to change current enrollment due to number mis-match");
         }
-        this.currentClasses = null;
     }
 
-    //Return ID
-    public getID() {
-        return this.id();
+    //Change a courses current max size given it is greater than the number of students enrolled
+    public void changeMaxCourseSize(int n) {
+        if(n >= this.courseEnrollment) {
+            this.maxCourseSize = n;
+            System.out.println("Max course enrollment successfully changed to " + Integer.toString(n);
+        } else {
+            System.out.println("Unable to change max course enrollment due to number mis-match");
+        }
     }
     
-    //Return Name
-    public getName() {
-        return this.name();
-    }
-
-    //Return Major
-    public getMajor() {
-        return this.major();
-    }
-
-    //Return previousClasses List
-    public getPreviousCourseList() {
-        return this.previousClasses();
-    }
-
-    //Return currentClasses List
-    public getCurrentCourseList() {
-        return this.currentClasses();
-    }
-
-    //Returns true if student currently enrolled in course, else returns false
-    public checkCurrentEnrollment(String class_name) {
-        if (this.currentClasses.contains(class_name) == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // Returns true if student previously enrolled in course, else returns false
-    public checkPreviousEnrollment(String class_name) {
-        if (this.previousClasses.contains(class_name) == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // Returns true if student is in specified major, else returns false
-    public checkMajor(String major) {
-        if (this.major.equals(major)) {
+    //Returns true if class has opening
+    public checkAvailability() {
+        if (this.courseEnrollment < this.maxCourseSize) {
             return true;
         } else {
             return false;
         }
     }
     
+    //Returns true given prerequisite course matches course's real pre-requisite
+    public checkPreReq(String checkPreReq) {
+        if (checkPreReq.equals(this.preReq)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    //Returns true if given major matches course's major
+    public checkMajor(String checkMajor) {
+        if (checkMajor.equals(this.major)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
