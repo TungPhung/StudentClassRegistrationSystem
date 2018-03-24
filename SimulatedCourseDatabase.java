@@ -8,8 +8,6 @@
  * Date - March 23, 2018
  */
 
-package CourseDB.SimulatedCourseDatabase;
-
 //Import Collections and Course class to build each individual course objects
 import java.util.*;
 import Course;

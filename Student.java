@@ -7,13 +7,16 @@
  * Date - March 23, 2018
  */
 
-package Student;
-
 //Import collections
 import  java.util.*;
 
 //Main Student Object
 public class Student {
+    private int id;
+    private String name;
+    private String major;
+    private List<String> previousClasses;
+    private List<String> currentClasses;
     
     //Default Constructor
     public Student() {
@@ -34,7 +37,7 @@ public class Student {
     }
 
     //Main Constructor with all arguments
-    public Student (int id, String name, String major, List<String> previousClasses=null, List<String> currentClasses=null) {
+    public Student (int id, String name, String major, List<String> previousClasses, List<String> currentClasses) {
         this.id = id;
         this.name = name;
         this.major = major;
@@ -47,7 +50,7 @@ public class Student {
         if (this.id == newid) {
             System.out.println("Unable to change ID - new ID is same as old ID");
         } else {
-            String oldid = this.id;
+            int oldid = this.id;
             this.id = newid;
             System.out.println("ID changed from " + oldid+ " to " + newid);
         }   
@@ -78,50 +81,50 @@ public class Student {
     //Add a course to a student's current courses
     public void addCourse (String course) {
         if (this.previousClasses.contains(course) == true) {
-            System.out.println("Unable to add course - student already enrolled")
+            System.out.println("Unable to add course - student already enrolled");
         } else {
             this.previousClasses.add(course);
             System.out.println("Course added");
         }
+
         
     }
-
     //Transfer all current courses to previous courses and empty current courses
     public void endSemester() {
         for (Iterator<String> iterator = this.currentClasses.iterator(); iterator.hasNext();) {
-            this.previousClasses.add(iterator.next);
-            this.previousClasses.remove(iterator.next);
+            this.previousClasses.add(iterator.next());
+            this.previousClasses.remove(iterator.next());
         }
         this.currentClasses.clear();
     }
 
     //Return ID
-    public getID() {
-        return this.id();
+    public int getID() {
+        return this.id;
     }
 
     //Return Name
-    public getName() {
-        return this.name();
+    public String getName() {
+        return this.name;
     }
 
     //Return Major
-    public getMajor() {
-        return this.major();
+    public String getMajor() {
+        return this.major;
     }
 
     //Return previousClasses List
-    public getPreviousCourseList() {
-        return this.previousClasses();
+    public List<String> getPreviousCourseList() {
+        return this.previousClasses;
     }
 
     //Return currentClasses List
-    public getCurrentCourseList() {
-        return this.currentClasses();
+    public List<String> getCurrentCourseList() {
+        return this.currentClasses;
     }
 
     //Returns true if student currently enrolled in course, else returns false
-    public checkCurrentEnrollment(String class_name) {
+    public boolean checkCurrentEnrollment(String class_name) {
         if (this.currentClasses.contains(class_name) == true) {
             return true;
         } else {
@@ -130,7 +133,7 @@ public class Student {
     }
 
     // Returns true if student previously enrolled in course, else returns false
-    public checkPreviousEnrollment(String class_name) {
+    public boolean checkPreviousEnrollment(String class_name) {
         if (this.previousClasses.contains(class_name) == true) {
             return true;
         } else {
@@ -139,7 +142,7 @@ public class Student {
     }
 
     // Returns true if student is in specified major, else returns false
-    public checkMajor(String major) {
+    public boolean checkMajor(String major) {
         if (this.major.equals(major)) {
             return true;
         } else {

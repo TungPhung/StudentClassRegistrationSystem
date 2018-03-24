@@ -6,7 +6,6 @@
  * 
  * Date - March 23, 2018
  */
-package RegistrationSystem;
 
 //Imports
 import CourseDB.SimulatedCourseDatabase;
@@ -14,9 +13,11 @@ import StudentDB.SimulatedStudentDatabase;
 import Course;
 import Student;
 import java.util.*;
-java.util.Scanner input = new Scanner( System.in);
+import java.util.Scanner;
 
-public class Registration System {
+Scanner input = new Scanner(System.in);
+
+public class RegistrationSystem {
     public static void main(String[] args) {
         System.out.println("Welcome to the Course Registration System.");
     }

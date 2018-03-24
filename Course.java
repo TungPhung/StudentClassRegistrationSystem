@@ -7,17 +7,20 @@
  * Date - March 23, 2018
  */
 
-package Course;
-
 //Import collections
 import  java.util.*;
 
 //Main Course Object
 public class Course {
-    
+    private String id;
+    private String major;
+    private String preReq;
+    private int courseEnrollment;
+    private int maxCourseSize;
+
     //Default Constructor
     public Course() {
-        this.id = NE000;
+        this.id = "NE000";
         this.major = "NE";
         this.preReq = null;
         this.courseEnrollment = 0;
@@ -47,34 +50,33 @@ public class Course {
      *
      */
 
-
     //Return ID
-    public getID() {
-        return this.id();
+    public String getID() {
+        return this.id;
     }
     
     //Return Major
-    public getMajor() {
-        return this.major();
+    public String getMajor() {
+        return this.major;
     }
 
     //Return Pre-Requisite course
-    public preRequisits() {
-        return this.preReq();
+    public String preRequisits() {
+        return this.preReq;
     }
 
     //Return Current Enrollment
-    public getCourseEnrollment() {
-        return this.courseEnrollment();
+    public int getCourseEnrollment() {
+        return this.courseEnrollment;
     }
 
     //Return Max Course Size
-    public getMaxCourseSize() {
-        return this.maxCourseSize();
+    public int getMaxCourseSize() {
+        return this.maxCourseSize;
     }
     
     //Change a course's ID
-    public void changeID (Sring newid) {
+    public void changeID (String newid) {
         if (this.id.equals(newid)) {
             System.out.println("Unable to change ID - new ID is same as old ID");
         } else {
@@ -96,7 +98,7 @@ public class Course {
     }
 
     //Change a course's pre-requisite if it is different from old pre-requisite course
-      public void changeMajor (String newPreReq) {
+      public void changePreReq (String newPreReq) {
         if (this.preReq.equals(newPreReq)) {
             System.out.println("Unable to change pre-requisite class - new pre-requisite is same as old pre-prequisite class");
         } else {
@@ -110,7 +112,7 @@ public class Course {
     public void changeEnrollment(int n) {
         if(n >= 0 && n <= this.maxCourseSize) {
             this.courseEnrollment = n;
-            System.out.println("Class enrollment successfully changed to " + Integer.toString(n);
+            System.out.println("Class enrollment successfully changed to " + Integer.toString(n));
         } else {
             System.out.println("Unable to change current enrollment due to number mis-match");
         }
@@ -120,14 +122,14 @@ public class Course {
     public void changeMaxCourseSize(int n) {
         if(n >= this.courseEnrollment) {
             this.maxCourseSize = n;
-            System.out.println("Max course enrollment successfully changed to " + Integer.toString(n);
+            System.out.println("Max course enrollment successfully changed to " + Integer.toString(n));
         } else {
             System.out.println("Unable to change max course enrollment due to number mis-match");
         }
     }
     
     //Returns true if class has opening
-    public checkAvailability() {
+    public boolean checkAvailability() {
         if (this.courseEnrollment < this.maxCourseSize) {
             return true;
         } else {
@@ -136,7 +138,7 @@ public class Course {
     }
     
     //Returns true given prerequisite course matches course's real pre-requisite
-    public checkPreReq(String checkPreReq) {
+    public boolean checkPreReq(String checkPreReq) {
         if (checkPreReq.equals(this.preReq)) {
             return true;
         } else {
@@ -145,7 +147,7 @@ public class Course {
     }
     
     //Returns true if given major matches course's major
-    public checkMajor(String checkMajor) {
+    public boolean checkMajor(String checkMajor) {
         if (checkMajor.equals(this.major)) {
             return true;
         } else {

@@ -8,8 +8,6 @@
  * Date - March 23, 2018
  */
 
-package StudentDB.SimulatedStudentDatabase;
-
 //Import Collections and Student class to build each individual student object
 import java.util.*;
 import Student;
@@ -59,7 +57,7 @@ public class SimulatedStudentDatabase {
         studentA = new StudentA(1111, "StudentA", "EE", null, null);
         studentB = new StudentB(2222, "StudentB", "CS", studentBPreviousCourses, null);
         studentC = new StudentC(3333, "StudentC", "MS", studentCPreviousCourses, studentCCurrentCourses);
-        studentD = new studentD(4444, "StudentD", "ME", null, studentDCurrentCourses);
+        studentD = new StudentD(4444, "StudentD", "ME", null, studentDCurrentCourses);
         
         //Calls init student method to hash all students
         initStudent();	
