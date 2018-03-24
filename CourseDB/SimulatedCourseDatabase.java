@@ -17,13 +17,17 @@ import Course;
 //Creates several courses objects with given attributes
 public class SimulatedCourseDatabase {
     /*
-     *Course Properties: Course Major, Course ID, Pre-requisites, Current Enrollment, Maximum Enrollment
+     *Course object properties: Course ID, Course Major, Pre-requisites, Current Enrollment, Maximum Enrollment
      * 
      */
+
+    
+    
+    static List<String> courseMajors = new ArrayList<String>();
     static Course courseA; 
-    static course courseB;  	 
-    static course courseC;	 
-    static course courseD;
+    static Course courseB;  	 
+    static Course courseC;	 
+    static Course courseD;
     
     //Creates previous courses for courses with previous courses
     static List<String> courseBPreviousCourses = new ArrayList<String>();
@@ -37,7 +41,21 @@ public class SimulatedCourseDatabase {
     static Map<String, course> courseMapById = new HashMap<String, course>();
          
     //Creates static declarations to create objects
-    static {      
+    static {
+        
+        //Creates Arraylist of numerical course numbers (i.e. - 101, 102, 201, 202, etc..)
+        static List<String> courseNumberOrder = new ArrayList<String>();
+        for(int i=100; i < 500; i+100) {
+        courseNumberOrder.add(Integer.toString(i + 1));
+        courseNumberOrder.add(Integer.toString(i + 2));
+        courseNumberOrder.add(Integer.toString(i + 3));
+    
+        static List<String> courseMajor = new ArrayList<String>();
+        courseMajor.add("EE");
+        courseMajor.add("CS");
+        courseMajor.add("MS");
+        courseMajor.add("ME");
+
         //Adds Previous Courses
         courseBPreviousCourses.add("CS101");
         courseBPreviousCourses.add("CS102");
@@ -71,7 +89,7 @@ public class SimulatedCourseDatabase {
     }
     
     //Returns hash of courses
-    public static Map<String, course> getcourseIdMap(){		
+    public static Map<String, course> getcourseIdMap() {		
         return courseMapById;		
     }
 }
