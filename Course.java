@@ -1,90 +1,91 @@
 /*
  * Author - Tung Phung
  * 
- * Student Class with the following attributes, int ID, name, major, previous courses
- * and current courses as arraylists
+ * Course class to define course object with id, major, prereqs, current class enrollment,
+ * and max class size
  * 
  * Date - March 23, 2018
  */
 
-package Student;
+package Course;
 
 //Import collections
 import  java.util.*;
 
-//Main Student Object
-public class Student {
+//Main Course Object
+public class Course {
     
     //Default Constructor
-    public Student() {
-        this.id = 0000;
-        this.name = "John Doe";
-        this.major = "UNDECLARED";
-        this.previousClasses = null;
-        this.currentClasses = null;
+    public Course() {
+        this.id = NE000;
+        this.major = "NE";
+        this.preReq = null;
+        this.classEnrollment = 0;
+        this.maxClassSize = 0;
     }
     
-    //New Student Construtor w/ No Courses
-    public Student(int id, String name, String major) {
+    //New Coonstructor Construtor w/ no space availability in course
+    public Course(String id, String major, String preReq) {
         this.id = id;
-        this.name = name;
         this.major = major;
-        this.previousClasses = null;
-        this.currentClasses = null;
+        this.preReq = preReq;
+        this.classEnrollment = 0;
+        this.maxClassSize = 0;
     }
 
     //Main Constructor with all arguments
-    public Student (int id, String name, String major, List<String> previousClasses=null, List<String> currentClasses=null) {
+    public Course(String id, String major, String preReq, int classEnrollment, int maxClassSize) {
         this.id = id;
-        this.name = name;
         this.major = major;
-        this.previousClasses = previousClasses;
-        this.currentClasses = currentClasses;
+        this.preReq = preReq;
+        this.classEnrollment = classEnrollment;
+        this.maxClassSize = maxClassSize;
     }
     
-    //Change a student's ID
-    public void changeID (int newid) {
-        if (this.id == newid) {
+    //Change a course's ID
+    public void changeID (Sring newid) {
+        if (this.id.equals(newid)) {
             System.out.println("Unable to change ID - new ID is same as old ID");
         } else {
             String oldid = this.id;
             this.id = newid;
-            System.out.println("ID changed from " + oldid+ " to " + newid);
+            System.out.println("ID changed from " + oldid + " to " + newid);
         }   
     }
 
-    //Change a student's name if it is different from old name
-    public void changeName (String newname) {
-        if (this.name.equals(newname)) {
-            System.out.println("Unable to change name - new name is same as old name");
-        } else {
-            String oldname = this.name;
-            this.name = newname;
-            System.out.println("Name changed from " + oldname + " to " + newname);
-        }   
-    }
-
-    //Change a student's major if it is different from old major
+    //Change a course's major if it is different from old major
     public void changeMajor (String newmajor) {
         if (this.major.equals(newmajor)) {
             System.out.println("Unable to change major - new major is same as old major");
         } else {
             String oldmajor = this.major;
             this.major = newmajor;
-            System.out.println("Major changed from " + oldmajor + " to " + newmajor);
-        }    
+            System.out.println("Name changed from " + oldmajor + " to " + newmajor);
+        }   
     }
 
-    //Add a course to a student's current courses
-    public void addCourse (String course) {
-        if (this.previousClasses.contains(course) == true) {
-            System.out.println("Unable to add course - student already enrolled")
+      //Change a course's pre-requisite if it is different from old pre-requisite course
+      public void changeMajor (String newPreReq) {
+        if (this.preReq.equals(newPreReq)) {
+            System.out.println("Unable to change pre-requisite class - new pre-requisite is same as old pre-prequisite class");
         } else {
-            this.previousClasses.add(course);
-            System.out.println("Course added");
-        }
+            String oldPreReq = this.preReq;
+            this.preReq = newPreReq;
+            System.out.println("Pre-Requisite changed from " + oldPreReq + " to " + newPreReq);
+        }   
+    }
+
+    public void checkAvailability
+
+    public void changeEnrollment(int n) {
+        if(n >= 0 && n <= ) {
+            this.classEnrollment = n;
+            System.out.println("CuClass Enrollment successfully changed to " + n);
+        } else {}
         
     }
+
+    public void changeClassSize()
 
     //Transfer all current courses to previous courses and empty current courses
     public void endSemester() {
