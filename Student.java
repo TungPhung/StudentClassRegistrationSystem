@@ -33,8 +33,8 @@ public class Student {
         this.currentClasses = null;
     }
 
-    //Main Constructor
-    public Student (int id, String name, String major, List<String> previousClasses, List<String> currentClasses) {
+    //Main Constructor with all arguments
+    public Student (int id, String name, String major, List<String> previousClasses=null, List<String> currentClasses=null) {
         this.id = id;
         this.name = name;
         this.major = major;
@@ -77,23 +77,74 @@ public class Student {
 
     //Add a course to a student's current courses
     public void addCourse (String course) {
-        if (this.previousClasses.contains("course") == true) {
+        if (this.previousClasses.contains(course) == true) {
             System.out.println("Unable to add course - student already enrolled")
         } else {
-            this.previousClasses.add("course");
+            this.previousClasses.add(course);
             System.out.println("Course added");
         }
         
     }
 
     //Transfer all current courses to previous courses and empty current courses
-    public void endSemester {
+    public void endSemester() {
         for (Iterator<String> iterator = this.currentClasses.iterator(); iterator.hasNext();) {
             this.previousClasses.add(iterator.next);
             this.previousClasses.remove(iterator.next);
         }
+        this.currentClasses.clear();
+    }
+
+    //Return ID
+    public getID() {
+        return this.id();
+    }
+
+    //Return Name
+    public getName() {
+        return this.name();
+    }
+
+    //Return Major
+    public getMajor() {
+        return this.major();
+    }
+
+    //Return previousClasses List
+    public getPreviousCourseList() {
+        return this.previousClasses();
+    }
+
+    //Return currentClasses List
+    public getCurrentCourseList() {
+        return this.currentClasses();
+    }
+
+    //Returns true if student currently enrolled in course, else returns false
+    public checkCurrentEnrollment(String class_name) {
+        if (this.currentClasses.contains(class_name) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Returns true if student previously enrolled in course, else returns false
+    public checkPreviousEnrollment(String class_name) {
+        if (this.previousClasses.contains(class_name) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Returns true if student is in specified major, else returns false
+    public checkMajor(String major) {
+        if (this.major.equals(major)) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
-    
-        
 }

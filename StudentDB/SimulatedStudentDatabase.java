@@ -74,7 +74,7 @@ public class SimulatedStudentDatabase {
     }
     
     //Returns hash of students
-    public static Map<String, Student> getStudentIdMap(){		
+    public static Map<String, Student> getStudentIdMap() {		
         return studentMapById;		
     }
 }

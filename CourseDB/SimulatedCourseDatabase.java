@@ -20,70 +20,59 @@ public class SimulatedCourseDatabase {
      *Course object properties: Course ID, Course Major, Pre-requisites, Current Enrollment, Maximum Enrollment
      * 
      */
+    
+    //Create arraylists of course number and course order
     static List<String> courseNumberOrder = new ArrayList<String>();
     static List<String> courseMajors = new ArrayList<String>();
-
-    //Creates previous courses for courses with previous courses
-    static List<String> courseBPreviousCourses = new ArrayList<String>();
-    static List<String> courseCPreviousCourses = new ArrayList<String>();
-   
-    //Creates current courses for courses with current courses
-    static List<String> courseCCurrentCourses = new ArrayList<String>();
-    static List<String> courseDCurrentCourses = new ArrayList<String>();
+    
+    //Create majors
+    static String ee = new String("EE");
+    static String cs = new String("CS");
+    static String ms = new String("MS");
+    static String me = new String("ME");
 
     //Crates Hash for keyed course ID
     static Map<String, course> courseMapById = new HashMap<String, course>();
          
-    //Creates static declarations to create objects
+    //Creates static declarations
     static {
         
         //Creates Arraylist of numerical course numbers (i.e. - 101, 102, 201, 202, etc..)
-        
         for(int i=100; i < 500; i+100) {
         courseNumberOrder.add(Integer.toString(i + 1));
         courseNumberOrder.add(Integer.toString(i + 2));
         courseNumberOrder.add(Integer.toString(i + 3));
-    
-        static List<String> courseMajor = new ArrayList<String>();
-        courseMajor.add("EE");
-        courseMajor.add("CS");
-        courseMajor.add("MS");
-        courseMajor.add("ME");
-
-        //Adds Previous Courses
-        courseBPreviousCourses.add("CS101");
-        courseBPreviousCourses.add("CS102");
-        courseCPreviousCourses.add("MS101");
-        courseCPreviousCourses.add("MS102");
-        courseCPreviousCourses.add("MS201");
-        courseCPreviousCourses.add("MS202");
-        
-        //Adds Current Courses
-        courseCCurrentCourses.add("MS301");
-        courseCCurrentCourses.add("MS303");
-        courseDCurrentCourses.add("ME101");
-        courseDCurrentCourses.add("MS102");
-
-        //Instantiates courses with courses
-        courseA = new courseA(1111, "courseA", "EE", null, null);
-        courseB = new courseB(2222, "courseB", "CS", courseBPreviousCourses, null);
-        courseC = new courseC(3333, "courseC", "MS", courseCPreviousCourses, courseCCurrentCourses);
-        courseD = new courseD(4444, "courseD", "ME", null, courseDCurrentCourses);
+        }
         
         //Calls init course method to hash all courses
-        initcourse();	
+        initCourse();
     }
     
     //Hashes all courses
-    public static void initcourse() {
-        courseMapById.put("1111", courseA);
-        courseMapById.put("2222", courseB);
-        courseMapById.put("3333", courseC);
-        courseMapById.put("4444", courseD);	
+    public static void initCourse() {
+        //Create Course objects
+        int maxClassSize = 30
+        int minClassSize = 10
+        String currentMajor;
+        int preReq = null;
+        for (int i = 0; i < courseMajors.size(); i++) {
+            for (int j = 0; i <courseNumberOrder.size(); j++) {
+                int actualClassSize = random.nextInt(maxClassSize - minClassSize + 1) + minClassSize;
+                int actualClassEnrollment = random.nextInt(rand1 + 1);
+                currentMajor = courseMajors.get(i)
+                if (j > 0) {
+                    preReq = currentMajor + courseNumberOrder.get(j-1);
+                } else {
+                    preReq = null;
+                }
+                courseobj = new Course(currentMajor + courseNumberOrder.get(j), currentMajor, preReq, actualClassEnrollment, actualClassSize);
+                courseMapById.put(coursobj.getID(), courseobj);
+            }  
+        }
     }
     
     //Returns hash of courses
-    public static Map<String, course> getcourseIdMap() {		
+    public static Map<String, Course> getcourseIdMap() {		
         return courseMapById;		
     }
 }
