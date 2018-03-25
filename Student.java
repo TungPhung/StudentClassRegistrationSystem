@@ -85,7 +85,6 @@ public class Student {
     //Add a course to a student's current courses
     public void addCourse (String course) {
             this.previousClasses.add(course);
-        }
     }
     //Transfer all current courses to previous courses and empty current courses
     public void endSemester() {

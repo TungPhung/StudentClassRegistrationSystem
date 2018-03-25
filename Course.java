@@ -36,7 +36,7 @@ public class Course {
         this.courseEnrollment = 0;
         this.maxCourseSize = 0;
     }
-2
+
     //Main Constructor with all arguments
     public Course(String id, String major, String preReq, int courseEnrollment, int maxCourseSize) {
         this.id = id;
@@ -112,7 +112,7 @@ public class Course {
     public void changeEnrollment(int n) {
         if (n >= 0 && n <= this.maxCourseSize) {
             this.courseEnrollment = n;
-            Sysstem.out.println("Class enrollment successfully changed to " + Integer.toString(n));
+            System.out.println("Class enrollment successfully changed to " + Integer.toString(n));
         } else {
             System.out.println("Unable to change current enrollment due to number mis-match");
         }
