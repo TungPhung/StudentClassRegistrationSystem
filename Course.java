@@ -10,8 +10,9 @@
 //Import collections
 import  java.util.*;
 
-//Main Course Object
+//Main course Object
 public class Course {
+    //Initialize variables
     private String id;
     private String major;
     private String preReq;
@@ -45,10 +46,7 @@ public class Course {
         this.maxCourseSize = maxCourseSize;
     }
 
-    /*
-     *Methods
-     *
-     */
+    //Accessor Methods
 
     //Return ID
     public String getID() {
@@ -61,7 +59,7 @@ public class Course {
     }
 
     //Return Pre-Requisite course
-    public String preRequisits() {
+    public String getPreRequisites() {
         return this.preReq;
     }
 
@@ -74,6 +72,8 @@ public class Course {
     public int getMaxCourseSize() {
         return this.maxCourseSize;
     }
+
+    //Modification Methods
     
     //Change a course's ID
     public void changeID (String newid) {

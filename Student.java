@@ -12,6 +12,8 @@ import  java.util.*;
 
 //Main Student Object
 public class Student {
+
+    //Initialize variables
     private int id;
     private String name;
     private String major;
@@ -45,6 +47,8 @@ public class Student {
         this.currentClasses = currentClasses;
     }
     
+    //Modification Methods
+
     //Change a student's ID
     public void changeID (int newid) {
         if (this.id == newid) {
@@ -97,6 +101,8 @@ public class Student {
         this.currentClasses.clear();
     }
 
+    //Accessor Methods
+
     //Return ID
     public int getID() {
         return this.id;
@@ -121,6 +127,8 @@ public class Student {
     public List<String> getCurrentCourseList() {
         return this.currentClasses;
     }
+
+    //Boolean Methods
 
     //Returns true if student currently enrolled in course, else returns false
     public boolean checkCurrentEnrollment(String class_name) {
@@ -147,6 +155,5 @@ public class Student {
         } else {
             return false;
         }
-    }
-    
+    }   
 }

@@ -8,14 +8,14 @@
  * Date - March 23, 2018
  */
 
-//Import Collections and Student class to build each individual student object
+//Import collections and student class to build each individual student object
 import java.util.*;
 
 //Creates several students objects with given attribute s
 public class SimulatedStudentDatabase {
     /*
      * Test Student Attributes
-     * StudentA (ID:1111) - EE (Electrical Engineering) Major, Previous Courses - None, Current Courses - None
+     * StudentA (ID:1111) - EE (Ele ctrical Engineering) Major, Previous Courses - None, Current Courses - None
      * StudentB (ID:2222)- CS (Computer Science) Major, Previous Courses - CS101, CS102, Current Courses - None
      * StudentC (ID:3333)- MS (Materials Science) Major, Previouses Courses - MS101, MS102, MS201, MS202, Current Courses - MS301, MS302
      * StudentD (ID:4444)- ME (Mechanical Engineering) Major, Previous Courses - None, Current Courses - ME101, ME102
@@ -53,10 +53,10 @@ public class SimulatedStudentDatabase {
         studentDCurrentCourses.add("MS102");
 
         //Instantiates Students with courses
-        Student studentA = new Student(1111, "StudentA", "EE", null, null);
-        Student studentB = new Student(2222, "StudentB", "CS", studentBPreviousCourses, null);
-        Student studentC = new Student(3333, "StudentC", "MS", studentCPreviousCourses, studentCCurrentCourses);
-        Student studentD = new Student(4444, "StudentD", "ME", null, studentDCurrentCourses);
+        studentA = new Student(1111, "StudentA", "EE", null, null);
+        studentB = new Student(2222, "StudentB", "CS", studentBPreviousCourses, null);
+        studentC = new Student(3333, "StudentC", "MS", studentCPreviousCourses, studentCCurrentCourses);
+        studentD = new Student(4444, "StudentD", "ME", null, studentDCurrentCourses);
         
         //Calls init student method to hash all students
         initStudent();	
@@ -69,8 +69,8 @@ public class SimulatedStudentDatabase {
         studentMapById.put("3333", studentC);
         studentMapById.put("4444", studentD);	
     }
-    
-    //Returns hash of students
+
+    //Returns HashMap of students
     public static Map<String, Student> getStudentIdMap() {		
         return studentMapById;		
     }
