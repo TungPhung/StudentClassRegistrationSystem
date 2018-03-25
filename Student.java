@@ -126,19 +126,29 @@ public class Student {
 
     //Returns true if student currently enrolled in course, else returns false
     public boolean checkCurrentEnrollment(String class_name) {
-        if (this.currentClasses.contains(class_name) == true) {
-            return true;
-        } else {
+        if(this.currentClasses == null) {
             return false;
-        }
+          }
+          else {
+              if (this.currentClasses.contains(class_name) == true) {
+                  return true;
+              } else {
+                  return false;
+              }
+          }
     }
 
     // Returns true if student previously enrolled in course, else returns false
     public boolean checkPreviousEnrollment(String class_name) {
-        if (this.previousClasses.contains(class_name) == true) {
-            return true;
-        } else {
-            return false;
+        if(this.previousClasses == null) {
+          return false;
+        }
+        else {
+            if (this.previousClasses.contains(class_name) == true) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 

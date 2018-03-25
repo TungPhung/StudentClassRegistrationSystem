@@ -30,6 +30,7 @@ public class RegistrationSystem {
         //Break Variable
         int breakInt = 1;
         int currentStudent;
+        int failState = 0;
         String classFailReasons = "";
         String response = "";
         String potentialCourseEnroll;
@@ -54,12 +55,23 @@ public class RegistrationSystem {
             System.out.println("Please Enter Student ID#: ");
             currentStudent = sc.nextInt();
             sc.nextLine();
+            System.out.println("");
             System.out.println("You entered Student ID #" + Integer.toString(currentStudent) + " . Is that correct? (Y/N)");
             response = sc.nextLine();
-            if (response.equals("Y")) {
+            System.out.println("");
+            if ((response.equals("Y") || response.toUpperCase().equals("Y")) && studentDatabase.containsKey(Integer.toString(currentStudent)) == true) {
+                System.out.println("Student Found");
+                System.out.println("");
                 breakInt = 0;
-            }
-        }while(breakInt == 1);
+            } else {
+                String studentNotFound = "";
+                if (studentDatabase.containsKey(Integer.toString(currentStudent)) == false) {
+                    studentNotFound = " : Student Not Found";
+                }
+                System.out.println("Please try again" + studentNotFound);
+                System.out.println("");
+            }    
+        }while (breakInt == 1);
         
         //Reset breakInt to 1 for next grouping evaluation
         breakInt = 1;
@@ -70,38 +82,40 @@ public class RegistrationSystem {
             potentialCourseEnroll = sc.nextLine();
             System.out.println("You entered " + potentialCourseEnroll + " . Is that correct? (Y/N)");
             response = sc.nextLine();
-            if (response.equals("Y")) {
-                breakInt = 0;
-            }
-        }while (breakInt == 1);
-        
-        //Reset breakInt to 1 for next grouping evaluation
-        breakInt = 1;
-
-        //Checks if course exists in course database
-        if (courseDatabase.containsKey(potentialCourseEnroll) == true) {
-            //Checks if course has enough space to enroll
-            if (courseDatabase.get(potentialCourseEnroll).checkAvailability() == true) {
-                //Checks if student meets prerequisite
-                if (studentDatabase.get(Integer.toString(currentStudent)).checkPreviousEnrollment(potentialCourseEnroll) == true) {
-                    //Checks if student is currently enrolled in course
-                    if (studentDatabase.get(Integer.toString(currentStudent)).checkCurrentEnrollment(potentialCourseEnroll) == true) {
-                        //Adds adds course to student current course list
-                        studentDatabase.get(Integer.toString(currentStudent)).addCourse(potentialCourseEnroll);
-                        //Increments course to reflect change
-                        courseDatabase.get(potentialCourseEnroll).studentAdd();
-                        System.out.println("You have met all requirements - " + courseDatabase.get(potentialCourseEnroll) + " has been added to " + studentDatabase.get(Integer.toString(currentStudent)).getName() + " 's schedule");
+            if (response.equals("Y") || response.toUpperCase().equals("Y")) {
+                if (courseDatabase.containsKey(potentialCourseEnroll) == true) {
+                    //Checks if course has enough space to enroll
+                    if (courseDatabase.get(potentialCourseEnroll).checkAvailability() == true) {
+                        //Checks if student meets prerequisite
+                        if (studentDatabase.get(Integer.toString(currentStudent)).checkPreviousEnrollment(courseDatabase.get(potentialCourseEnroll).getPreRequisites()) == true) {
+                            //Checks if student is currently enrolled in course
+                            if (studentDatabase.get(Integer.toString(currentStudent)).checkCurrentEnrollment(courseDatabase.get(potentialCourseEnroll).getPreRequisites()) == true) {
+                                //Adds adds course to student current course list
+                                studentDatabase.get(Integer.toString(currentStudent)).addCourse(potentialCourseEnroll);
+                                //Increments course to reflect change
+                                courseDatabase.get(potentialCourseEnroll).studentAdd();
+                                breakInt = 0;
+                                System.out.println("You have met all requirements - " + courseDatabase.get(potentialCourseEnroll) + " has been added to " + studentDatabase.get(Integer.toString(currentStudent)).getName() + " 's schedule");
+                            } else {
+                                classFailReasons += " Currently Enrolled ";
+                            }
+                        } else {
+                            classFailReasons += " Does not meet prerequisite ";
+                        }
                     } else {
-                        classFailReasons += " Currently Enrolled ";
+                        classFailReasons += " Course does not not have enough space ";
                     }
-                } else {
-                    classFailReasons += " Does not meet prerequisite ";
+                } else { 
+                    classFailReasons += " Course does not exist ";
                 }
+                System.out.println("Cannot join course for the following reasons: " + classFailReasons);
             } else {
-                classFailReasons += " Course does not not have enough space ";
+                System.out.println("Please try again");
+                System.out.println("");
             }
-        } else { 
-            classFailReasons += " Course does not exist ";
-        }    
+        } while (breakInt == 1);
+        
+        //End Program
+        System.exit(0);
     }
 }
