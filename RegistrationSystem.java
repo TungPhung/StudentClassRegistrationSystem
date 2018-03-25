@@ -15,7 +15,7 @@ public class RegistrationSystem {
     public static String prettyPrintArrayList(List<String> array) {
         Iterator<String> itr = array.iterator();
         String s = new String("");
-        while(itr.hasNext()) {
+        while (itr.hasNext()) {
             s = s + itr.next() + " ";
         }
         return s;
@@ -42,9 +42,33 @@ public class RegistrationSystem {
         System.out.println("******************************************\n\n");
 
         System.out.println("Please Enter Student ID#: ");
-
         int i = sc.nextInt();
+
+        System.out.println("You entered " + Integer.toString(i) + " . Is that correct? (Y/N)");
+
+        System.out.println("What course would you like to enroll in?");
+        String potentialCourseEnroll = sc.nextLine();
+        
+        //Checks if course exists in course database
+        if (courseDatabase.containsKey(potentialCourseEnroll) == true) {
+            //Checks if course has enough space to enroll
+            if (courseDatabase.get(potentialCourseEnroll).getMaxCourseSize() > courseDatabase.get(potentialCourseEnroll).getCourseEnrollment()) {
+                //Checks if student meets prerequisite
+                if (c
+            } else {
+
+            }
+        } else {
+
+        }
+        //courseDatabase()
+
+        System.out.println("Unfortunately you do not meet the prerequisites of the this course. pick another course. ");
+
+        System.out.println("You meet the prerequisite for this course " + courseDatabase("").getPreRequisites() + " and the current capacity is c")
         String j = sc.nextLine();
+
+        
 
         
 

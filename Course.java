@@ -36,7 +36,7 @@ public class Course {
         this.courseEnrollment = 0;
         this.maxCourseSize = 0;
     }
-
+2
     //Main Constructor with all arguments
     public Course(String id, String major, String preReq, int courseEnrollment, int maxCourseSize) {
         this.id = id;
@@ -110,7 +110,7 @@ public class Course {
 
     //Change a course's current enrollment size given that the new number makes sense
     public void changeEnrollment(int n) {
-        if(n >= 0 && n <= this.maxCourseSize) {
+        if (n >= 0 && n <= this.maxCourseSize) {
             this.courseEnrollment = n;
             System.out.println("Class enrollment successfully changed to " + Integer.toString(n));
         } else {
@@ -120,7 +120,7 @@ public class Course {
 
     //Change a courses current max size given it is greater than the number of students enrolled
     public void changeMaxCourseSize(int n) {
-        if(n >= this.courseEnrollment) {
+        if (n >= this.courseEnrollment) {
             this.maxCourseSize = n;
             System.out.println("Max course enrollment successfully changed to " + Integer.toString(n));
         } else {
