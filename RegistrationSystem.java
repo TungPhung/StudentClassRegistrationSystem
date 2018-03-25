@@ -20,7 +20,8 @@ public class RegistrationSystem {
         }
         return s;
     }
-    
+
+    //Main Method
     public static void main(String[] args) {
 
         //Input stream
@@ -28,8 +29,10 @@ public class RegistrationSystem {
 
         //Break Variable
         int breakInt = 1;
-        String response = "";
         int currentStudent;
+        String classFailReasons = "";
+        String response = "";
+        String potentialCourseEnroll;
 
         //Create simulation database of students
         Map<String, Student> studentDatabase = new HashMap<String, Student>();
@@ -40,16 +43,18 @@ public class RegistrationSystem {
         courseDatabase = SimulatedCourseDatabase.getCourseIdMap();
 
         //Print Initial Welcome
-        System.out.println("******************************************");
+        System.out.println("\n\n******************************************");
         System.out.println("*");
-        System.out.println("Welcome to the Course Registration System");
+        System.out.println("*  Welcome to the Course Registration System");
         System.out.println("*");
-        System.out.println("******************************************\n\n");
+        System.out.println("******************************************\n");
 
         //Gets Student ID and if break = 0, it moves on
         do {
             System.out.println("Please Enter Student ID#: ");
-            System.out.println("You entered " + Integer.toString(currentStudent) + " . Is that correct? (Y/N)");
+            currentStudent = sc.nextInt();
+            sc.nextLine();
+            System.out.println("You entered Student ID #" + Integer.toString(currentStudent) + " . Is that correct? (Y/N)");
             response = sc.nextLine();
             if (response.equals("Y")) {
                 breakInt = 0;
@@ -62,7 +67,7 @@ public class RegistrationSystem {
         //Gets Course and if breakInt = 0
         do {
             System.out.println("What course would you like to enroll in?");
-            String potentialCourseEnroll = sc.nextLine();
+            potentialCourseEnroll = sc.nextLine();
             System.out.println("You entered " + potentialCourseEnroll + " . Is that correct? (Y/N)");
             response = sc.nextLine();
             if (response.equals("Y")) {
@@ -73,22 +78,19 @@ public class RegistrationSystem {
         //Reset breakInt to 1 for next grouping evaluation
         breakInt = 1;
 
-        //Evaluate for class size and prerequisite requirements
-        String classFailReasons = "";
-
         //Checks if course exists in course database
         if (courseDatabase.containsKey(potentialCourseEnroll) == true) {
             //Checks if course has enough space to enroll
-            if (courseDatabase.get(potentialCourseEnroll).checkCourseAvailability() = true) {
+            if (courseDatabase.get(potentialCourseEnroll).checkAvailability() == true) {
                 //Checks if student meets prerequisite
-                if (studentDatabase(Integer.toString(currenStudent)).checkPreviousEnrollment(potentialCourseEnroll) == true) {
+                if (studentDatabase.get(Integer.toString(currentStudent)).checkPreviousEnrollment(potentialCourseEnroll) == true) {
                     //Checks if student is currently enrolled in course
-                    if (studentDatabase(Integer.toString(currenStudent)).checkCurrentEnrollment(potentialCourseEnroll) == true) {
+                    if (studentDatabase.get(Integer.toString(currentStudent)).checkCurrentEnrollment(potentialCourseEnroll) == true) {
                         //Adds adds course to student current course list
-                        studentDatabase(Integer.toString(currentStudent)).addCourse();
+                        studentDatabase.get(Integer.toString(currentStudent)).addCourse(potentialCourseEnroll);
                         //Increments course to reflect change
                         courseDatabase.get(potentialCourseEnroll).studentAdd();
-                        System.out.println("You have met all requirements - " + course.get(potentialCourseEnroll) + " has been added to " + studentDatabase(Integer.toString(currentStudent)).getName() + " 's schedule");
+                        System.out.println("You have met all requirements - " + courseDatabase.get(potentialCourseEnroll) + " has been added to " + studentDatabase.get(Integer.toString(currentStudent)).getName() + " 's schedule");
                     } else {
                         classFailReasons += " Currently Enrolled ";
                     }
@@ -100,28 +102,6 @@ public class RegistrationSystem {
             }
         } else { 
             classFailReasons += " Course does not exist ";
-        }
-        
-
-        //String puppy = prettyPrintArrayList(studentDatabase.get("3333").getPreviousCourseList());
-        //System.out.println(puppy);
-        
-        /* 
-        Student a = studentDatabase.get("3333");
-        String x = a.getName();
-        System.out.println(x); */
-        /* 
-        Course b = courseDatabase.get("CS102");
-        String c = b.getPreRequisites();
-        System.out.println(c); */
-/* 
-        boolean puppy = stuDatabase.get("3333").getPreviousCourseList().isEmpty();
-        //System.out.println("hi");
-        System.out.println(String.valueOf(puppy)); */
-
-
-    //System.out.println("I got this " + Integer.toString(x));
-
-        
+        }    
     }
 }
