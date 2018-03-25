@@ -26,6 +26,9 @@ public class RegistrationSystem {
         //Input stream
         Scanner sc = new Scanner(System.in);
 
+        //Break Variable
+        int breakInt = 1;
+
         //Create simulation database of students
         Map<String, Student> studentDatabase = new HashMap<String, Student>();
         studentDatabase = SimulatedStudentDatabase.getStudentIdMap();
@@ -41,26 +44,48 @@ public class RegistrationSystem {
         System.out.println("*");
         System.out.println("******************************************\n\n");
 
-        System.out.println("Please Enter Student ID#: ");
-        int i = sc.nextInt();
-
-        System.out.println("You entered " + Integer.toString(i) + " . Is that correct? (Y/N)");
-
-        System.out.println("What course would you like to enroll in?");
-        String potentialCourseEnroll = sc.nextLine();
+        //Gets Student ID and if break = 0, it moves on
+        do {
+            System.out.println("Please Enter Student ID#: ");
+            int currentStudent = sc.nextInt();
+            System.out.println("You entered " + Integer.toString(currentStudent) + " . Is that correct? (Y/N)");
+            String response = sc.nextLine();
+            if (response.equals("Y") {
+                breakInt = 0;
+            }
+        }while(breakInt == 1)
         
+        //Reset breakInt to 1 for next grouping evaluation
+        breakInt = 1;
+
+        //Gets Course and if breakInt = 0
+        do {
+            System.out.println("What course would you like to enroll in?");
+            String potentialCourseEnroll = sc.nextLine();
+            System.out.println("You entered " + potentialCourseEnroll + " . Is that correct? (Y/N)");
+            response = sc.nextLine();
+            if (response.equals("Y") {
+                breakInt = 0;
+            }
+        }while (breakInt == 1)
+        
+        //Reset breakInt to 1 for next grouping evaluation
+        breakInt = 1;
+
+        //Evaluate for class size and prerequisite requirements
+        String classFailReasons = "";
+
         //Checks if course exists in course database
         if (courseDatabase.containsKey(potentialCourseEnroll) == true) {
             //Checks if course has enough space to enroll
             if (courseDatabase.get(potentialCourseEnroll).getMaxCourseSize() > courseDatabase.get(potentialCourseEnroll).getCourseEnrollment()) {
                 //Checks if student meets prerequisite
-                if (c
-            } else {
+                if (studentDatabase(Integer.toString(currenStudent)).checkPreviousEnrollment(potentialCourseEnroll) == true)
+                    //Checks if student is currently enrolled in course
+                    if (studentDatabase(Integer.toString(currenStudent)).checkCurrentEnrollment(potentialCourseEnroll) == true)
+        
 
-            }
-        } else {
-
-        }
+        
         //courseDatabase()
 
         System.out.println("Unfortunately you do not meet the prerequisites of the this course. pick another course. ");

@@ -84,13 +84,8 @@ public class Student {
 
     //Add a course to a student's current courses
     public void addCourse (String course) {
-        if (this.previousClasses.contains(course) == true) {
-            System.out.println("Unable to add course - student already enrolled");
-        } else {
             this.previousClasses.add(course);
-            System.out.println("Course added");
         }
-
     }
     //Transfer all current courses to previous courses and empty current courses
     public void endSemester() {

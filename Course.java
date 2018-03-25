@@ -112,7 +112,7 @@ public class Course {
     public void changeEnrollment(int n) {
         if (n >= 0 && n <= this.maxCourseSize) {
             this.courseEnrollment = n;
-            System.out.println("Class enrollment successfully changed to " + Integer.toString(n));
+            Sysstem.out.println("Class enrollment successfully changed to " + Integer.toString(n));
         } else {
             System.out.println("Unable to change current enrollment due to number mis-match");
         }
@@ -127,7 +127,17 @@ public class Course {
             System.out.println("Unable to change max course enrollment due to number mis-match");
         }
     }
-    
+
+    //Updates course for student addition
+    public void studentAdd() {
+        this.courseEnrollment++;
+    }
+
+    //Updates course for student removal
+    public void studentRemove() {
+        this.courseEnrollment--;
+    }
+
     //Returns true if class has opening
     public boolean checkAvailability() {
         if (this.courseEnrollment < this.maxCourseSize) {
